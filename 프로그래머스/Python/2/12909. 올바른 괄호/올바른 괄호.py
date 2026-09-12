@@ -1,13 +1,14 @@
-from collections import deque
-
 def solution(s):
-    li = []
-    
-    for i in s:
-        if  i =="(":
-            li.append(i)
-        elif i == ")":
-            if not li:
-                return False
-            li.pop()
-    return not li
+    answer = True
+    stack = []
+    for i in range(len(s)):
+        if s[i] == "(":
+            stack.append(s[i])
+        else:
+            if not stack:
+                answer = False
+                break
+            stack.pop()
+    if stack:
+        answer = False
+    return answer
